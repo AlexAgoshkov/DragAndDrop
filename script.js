@@ -5,22 +5,6 @@ let myButton = document.querySelector('.myButton');
 
 let draggedItem = null;
 
-function AddNewElement(text) {
-	let newDiv = document.createElement('div');
-       
-		newDiv.className = "list-item";
-		newDiv.draggable = "true";
-		newDiv.innerText = text;
-
-        let cont = document.querySelector(".list");
-		cont.appendChild(newDiv);
-}
-
-function UpdateList(){
-    list_items = document.querySelectorAll('.list-item');
-    lists = document.querySelectorAll('.list');
-}
-
 function IsValidText(){
 	if(myText.value == ''){
 		return false;
@@ -30,16 +14,30 @@ function IsValidText(){
 	}
 }
 
-myButton.addEventListener('click', function(event) {
-	if(IsValidText()){
-		AddNewElement(myText.value);
-		UpdateList();
-	}
-	else{
-		event.preventDefault();
-	}
+myText.value = 'List Item 4';
 
-});
+function AddNewElement() {
+	
+	let newDiv = document.createElement('div');
+       
+		newDiv.className = "list-item";
+		newDiv.draggable = "true";
+		newDiv.innerText = myText.value;
+
+        let cont = document.querySelector(".list");
+		cont.appendChild(newDiv);
+		
+}
+
+function UpdateList(){
+	list_items = document.querySelectorAll('.list-item');
+}
+
+// AddNewElement();
+// UpdateList();
+
+myButton.addEventListener('click', AddNewElement);
+myButton.addEventListener('click', UpdateList);
 
 for (let i = 0; i < list_items.length; i++) {
 	const item = list_items[i];
