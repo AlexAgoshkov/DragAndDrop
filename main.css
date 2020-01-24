@@ -52,13 +52,19 @@ header {
 }
 
 .lists .list .list-item {
-background-color: #F3F3F3;
+background-color: #2ecc71;
 border-radius: 8px;
 padding: 15px 20px;
 text-align: center;
 margin: 4px 0px; 	
 
 
+}
+
+.lists .list .list-item:hover {
+	box-shadow: 1px 1px 1px 1px blue;
+	border: 1px solid rgb(0, 110, 255);
+	background-color: #0d7739;
 }
 
 input[type="text"] {
@@ -73,7 +79,7 @@ input[type="text"] {
 	outline: none;
 }
 
-input::placeholder {
+/* input::placeholder {
 	color: white;
   }
 
@@ -100,4 +106,4 @@ input[type="text"]:hover {
 	box-shadow: 1px 1px 1px 1px blue;
 	border: 1px solid rgb(0, 110, 255);
 	
-}
+} */

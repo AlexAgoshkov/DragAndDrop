@@ -5,39 +5,31 @@ let myButton = document.querySelector('.myButton');
 
 let draggedItem = null;
 
-function IsValidText(){
-	if(myText.value == ''){
-		return false;
-	}
-	else{
-		return true;
-	}
-}
+const Point1 = 'Learn JavaScript';
+const Point2 = 'Learn JavaScript!!!';
+const Point3 = 'LEARN JAVASCRIPT!!!!'; 
 
-myText.value = 'List Item 4';
-
-function AddNewElement() {
+function AddNewElement(text) {
 	
 	let newDiv = document.createElement('div');
        
 		newDiv.className = "list-item";
 		newDiv.draggable = "true";
-		newDiv.innerText = myText.value;
+		newDiv.innerText = text
 
         let cont = document.querySelector(".list");
 		cont.appendChild(newDiv);
-		
 }
 
 function UpdateList(){
 	list_items = document.querySelectorAll('.list-item');
 }
 
-// AddNewElement();
-// UpdateList();
+AddNewElement(Point1);
+AddNewElement(Point2);
+AddNewElement(Point3);
 
-myButton.addEventListener('click', AddNewElement);
-myButton.addEventListener('click', UpdateList);
+UpdateList();
 
 for (let i = 0; i < list_items.length; i++) {
 	const item = list_items[i];
@@ -73,8 +65,18 @@ for (let i = 0; i < list_items.length; i++) {
 		});
 
 		list.addEventListener('drop', function (e) {
+			if(e.target === item)
+			{
+				let tmp = draggedItem.innerText;
+				draggedItem.innerText = e.target.innerText;
+				e.target.innerText = tmp;
+			}
+			else
+			{
 			this.append(draggedItem);
 			this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+			}
 		});
 	}
 }
+
